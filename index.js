@@ -44,4 +44,31 @@ const bookStore = {
 }
 
 // Write your code here!
+const bookStoreTitle = document.querySelector("#header");
+bookStoreTitle.textContent = bookStore.name;
 
+// Get the bookList container from the DOM
+const bookList = document.getElementById('book-list');
+
+// Loop through every book in the bookStore
+for (const book of bookStore.books) {
+  // 1. Create the elements
+  const bookContainer = document.createElement('li');
+  const bookTitle = document.createElement('h3');
+  const bookAuthor = document.createElement('p');
+  const bookImage = document.createElement('img');
+
+  // 2. Set the content
+  bookTitle.textContent = book.title;
+  bookAuthor.textContent = book.author;
+  bookImage.src = book.imageUrl;
+  bookImage.alt = book.title;   // good accessibility practice
+
+  // 3. Append the elements to bookContainer
+  bookContainer.appendChild(bookImage);
+  bookContainer.appendChild(bookTitle);
+  bookContainer.appendChild(bookAuthor);
+
+  // 4. Append bookContainer to bookList
+  bookList.appendChild(bookContainer);
+}
